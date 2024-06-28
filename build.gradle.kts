@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "ovh.neziw"
-version = "1.0.0"
+version = "1.0.1"
 
 tasks.withType<JavaCompile> {
     options.compilerArgs = listOf("-Xlint:deprecation")
@@ -48,6 +48,7 @@ repositories {
 
 dependencies {
     implementation("io.javalin:javalin:6.1.6")
+    implementation("org.slf4j:slf4j-simple:2.0.13")
 }
 
 tasks.build {
