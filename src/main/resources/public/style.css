@@ -1,0 +1,24 @@
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    color: #008000;
+    font-size: 2em;
+}
