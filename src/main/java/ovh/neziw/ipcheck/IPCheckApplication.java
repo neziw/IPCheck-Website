@@ -24,6 +24,7 @@
 package ovh.neziw.ipcheck;
 
 import io.javalin.Javalin;
+import io.javalin.http.Context;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
@@ -45,7 +46,7 @@ public final class IPCheckApplication {
 
         javalin.get("/", ctx -> {
             final String htmlContent = readResource();
-            ctx.html(htmlContent.replace("{{ip_address}}", ctx.ip()));
+            ctx.html(htmlContent.replace("{{ip_address}}", getClientIp(ctx)));
         });
         javalin.error(404, ctx -> ctx.redirect("/"));
 
@@ -60,5 +61,22 @@ public final class IPCheckApplication {
             }
         }
         return "";
+    }
+
+    private static String getClientIp(Context ctx) {
+        String ipAddress = ctx.header("CF-Connecting-IP");
+        if (ipAddress == null || ipAddress.isEmpty()) {
+            ipAddress = ctx.header("X-Real-IP");
+            if (ipAddress == null || ipAddress.isEmpty()) {
+                ipAddress = ctx.header("X-Forwarded-For");
+                if (ipAddress != null && !ipAddress.isEmpty()) {
+                    ipAddress = ipAddress.split(",")[0].trim();
+                }
+            }
+        }
+        if (ipAddress == null || ipAddress.isEmpty()) {
+            ipAddress = ctx.ip();
+        }
+        return ipAddress;
     }
 }
