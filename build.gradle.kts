@@ -47,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.javalin:javalin:6.1.6")
+    implementation("io.javalin:javalin:6.2.0")
     implementation("org.slf4j:slf4j-simple:2.0.13")
 }
 
