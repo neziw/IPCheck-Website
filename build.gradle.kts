@@ -48,7 +48,7 @@ repositories {
 
 dependencies {
     implementation("io.javalin:javalin:6.1.6")
-    implementation("org.slf4j:slf4j-simple:2.0.13")
+    implementation("org.slf4j:slf4j-simple:2.0.16")
 }
 
 tasks.build {
