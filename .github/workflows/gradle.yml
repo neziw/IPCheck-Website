@@ -38,7 +38,7 @@ jobs:
         run: ./gradlew build
 
       - name: Publish artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: IPCheck-Website
           path: 'build/libs/IPCheck-Website *.jar'
